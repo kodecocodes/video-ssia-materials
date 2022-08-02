@@ -101,6 +101,6 @@ struct UsersController: RouteCollection {
 }
 
 struct SignInWithAppleToken: Content {
-  let token: String
-  let name: String?
+    let token: String
+    let name: String?
 }
