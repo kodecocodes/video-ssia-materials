@@ -114,7 +114,7 @@ struct LoginView: View {
           name = nil
         }
         let requestData = SignInWithAppleToken(token: tokenString, name: name, username: credential.email)
-        let path = "\(apiHostname)/auth/siwa"
+        let path = "\(apiHostname)/api/users/siwa"
         guard let url = URL(string: path) else {
           fatalError("Failed to convert URL")
         }
@@ -122,7 +122,7 @@ struct LoginView: View {
           var loginRequest = URLRequest(url: url)
           loginRequest.httpMethod = "POST"
           loginRequest.httpBody = try JSONEncoder().encode(requestData)
-          
+          loginRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
           let (data, response) = try await URLSession.shared.data(for: loginRequest)
           guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             self.showingLoginErrorAlert = true
