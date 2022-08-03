@@ -34,7 +34,7 @@ import SwiftUI
 
 @main
 struct AppMain: App {
-  static let apiHostname = "http://192.168.1.214:8080"
+  static let apiHostname = "http://localhost:8080"
   
   @StateObject
   var auth = Auth(apiHostname: AppMain.apiHostname)
