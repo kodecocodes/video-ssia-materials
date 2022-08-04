@@ -1,0 +1,21 @@
+#extend("base"):
+    #export("content"):
+        <h1>#if(editing): Update #else: Create #endif An Acronym</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="short" class="form-label">Acronym</label>
+                <input type="text" class="form-control" id="short" name="short" placeholder="Enter Acronym"
+                 #if(editing): value="#(acronym.short)" #endif
+                >
+            </div>
+            <div class="mb-3">
+                <label for="long" class="form-label">Meaning</label>
+                <input type="text" class="form-control" id="long" name="long" placeholder="Enter Meaning"
+                 #if(editing): value="#(acronym.long)" #endif
+                >
+            </div>
+            <button type="submit" class="btn btn-primary">#if(editing): Update #else: Submit #endif</button>
+        </form>
+    #endexport
+#endextend
